@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 99%;
+            padding: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div onclick="ShowDetail()" class="status">
+        <label for="">Status Ayah</label>
+        <input type="radio" name="status" id="hidup"> Hidup
+        <br>
+        <input type="radio" name="status" id="mati"> Meninggal
+        <br>
+        <input type="radio" name="status" id="tidak_tahu"> Tidak Diketahui
+    </div>
+
+    <div class="detail">
+        <div>
+            <label for="">Pendidikan Ayah</label>
+            <select name="" id="">
+                <option value="">SD</option>
+                <option value="">SMP</option>
+                <option value="">SMA</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="">Pekerjaan Ayah</label>
+            <select name="" id="">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="">Deskripsi Pekerjaan ayah</label>
+            <input type="text" placeholder="tuliskan nama spesifikasi pekerjaan">
+        </div>
+
+        <div>
+            <label for="">Total Penghasilan Ayah Per Bulan</label>
+            <input type="text">
+        </div>
+
+        <div class="hidup">
+            <label for="">Detail Ayah bekerja, berapa lama sudah bekerja, kondisi kesehatan, dan kondisi karir profesinya</label>
+            <input type="text">
+        </div>
+
+        <div class="meninggal" style="display: none;">
+            <label for="">Detail Pekerjaan Ayah Semasa Hidup</label>
+            <input type="text">
+        </div>
+    </div>
+
+    <script>
+        function ShowDetail() {
+            var status = document.querySelector('input[name="status"]:checked').id;
+
+            if (status === 'hidup') {
+                document.querySelector('.hidup').style.display = 'block';
+                document.querySelector('.meninggal').style.display = 'none';
+                document.querySelector('.detail').style.display = 'block';
+            } else if (status === 'mati') {
+                document.querySelector('.hidup').style.display = 'none';
+                document.querySelector('.meninggal').style.display = 'block';
+                document.querySelector('.detail').style.display = 'block';
+            } else if (status === 'tidak_tahu') {
+                document.querySelector('.detail').style.display = 'none';
+            } else {
+                document.querySelector('.detail').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

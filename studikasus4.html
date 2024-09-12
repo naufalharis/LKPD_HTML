@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {display: block;}
+        #wrap2 {display: none;}
+        #wrap3 {display: none;}
+    </style>
+</head>
+<body>
+    <form action="">
+        <div>
+            <label for="select">pilih</label>
+            <select name="" id="select" onchange="sdsmpsma(this)">
+                <option value="sd">SD</option>
+                <option value="smp">SMP</option>
+                <option value="sma">SMA</option>
+            </select>
+            <div id="sd">
+                <label for="select"></label>
+                <select name="SD" id="wrap">
+                    kelas
+                    <option value="">kelas1</option>
+                    <option value="">kelas2</option>
+                    <option value="">kelas3</option>
+                    <option value="">kelas4</option>
+                    <option value="">kelas5</option>
+                    <option value="">kelas6</option>
+                </select>
+            </div>
+            <div id="smp">
+                <label for="select"></label>
+                <select name="SMP" id="wrap2">
+                    <option value="">kelas7</option>
+                    <option value="">kelas8</option>
+                    <option value="">kelas9</option>
+                </select>
+            </div>
+            <div id="sma">
+                <label for="select"></label>
+                <select name="SMA" id="wrap3">
+                    <option value="">kelas10</option>
+                    <option value="">kelas11</option>
+                    <option value="">kelas12</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <script>
+        function sdsmpsma(e){
+            if(e.value == "sd"){
+                document.getElementById("sd").style.display ="block";
+                document.getElementById("wrap").style.display ="block";
+                document.getElementById("wrap2").style.display ="none";
+                document.getElementById("wrap3").style.display ="none";
+            }else if(e.value == "smp"){
+                document.getElementById("smp").style.display ="block";
+                document.getElementById("wrap2").style.display ="block";
+                document.getElementById("wrap").style.display ="none";
+                document.getElementById("wrap3").style.display ="none";
+            }else if(e.value == "sma"){
+                document.getElementById("sma").style.display ="block";
+                document.getElementById("wrap3").style.display ="block";
+                document.getElementById("wrap").style.display ="none";
+                document.getElementById("wrap2").style.display ="none";
+            }else{
+            }
+        }
+    </script>
+</body>
+</html>

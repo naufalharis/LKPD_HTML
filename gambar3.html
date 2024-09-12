@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Shape Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        
+        .semua{margin: 50px;
+        }
+
+        .image-selector img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid black;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .image-selector img.active {
+            display: block;
+        }
+
+        .control {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        select,
+        input,
+        button {
+            padding: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Shape styles */
+        .circle {
+            border-radius: 50%;
+        }
+
+        .square {
+            border-radius: 0;
+        }
+        .triangle {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+</style>
+    </style>
+</head>
+
+<body>
+<div class="semua">
+    <div class="image-selector">
+        <img src="rumah1.jpg" alt="Gambar 1" id="image1" class="active square">
+        <img src="rumah2.jpg" alt="Gambar 2" id="image2" class="square">
+        <img src="rumah3.jpg" alt="Gambar 3" id="image3" class="square">
+    </div>
+
+    <div class="control">
+        <label for="imageSelector">Pilih Foto</label>
+        <select name="" id="imageSelector">
+            <option value="image1">Gambar 1</option>
+            <option value="image2">Gambar 2</option>
+            <option value="image3">Gambar 3</option>
+        </select>
+
+        <label for="shapeSelector">Pilih Bentuk</label>
+        <select id="shapeSelector">
+            <option value="circle">Lingkaran</option>
+            <option value="square">Persegi</option>
+            <option value="triangle">Segitiga</option>
+        </select>
+
+        <label for="borderColorSelector">Pilih Warna Border</label>
+        <input type="color" id="borderColorSelector">
+
+        <button onclick="applyImage()">Ganti Gambar</button>
+    </div>
+
+    <script>
+        function applyImage() {
+            const selectedImageId = document.getElementById('imageSelector').value;
+            const selectedShape = document.getElementById('shapeSelector').value;
+            const selectedBorderColor = document.getElementById('borderColorSelector').value;
+
+            const images = document.querySelectorAll('.image-selector img');
+            images.forEach(img => {
+                img.classList.remove('active', 'circle', 'square', 'triangle');
+            });
+
+            const selectedImage = document.getElementById(selectedImageId);
+            selectedImage.classList.add('active', selectedShape,);
+            selectedImage.style.borderColor = selectedBorderColor;
+        }
+    </script>
+</div>
+</body>
+
+</html>

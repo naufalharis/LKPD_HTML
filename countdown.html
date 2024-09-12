@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        .semua{
+            text-align: center;
+            flex-direction: column;
+            display: flex;
+        }
+        #waktu {
+            font-size: 50px;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 25px;
+            padding: 10px 20px;
+            color: white
+            ;
+            background-color: rgb(18, 168, 66);
+            border: none;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="semua">
+    <h1>Hitung mundur</h1>
+    <div id="waktu">5</div>
+    <button id="startButton">Start</button>
+    <button id="pauseButton">Pause</button>
+
+    <script>
+        let waktumundur = 5;
+        let timerInterval;
+        let isPaused = false;
+
+        const timerElement = document.getElementById('waktu');
+        const startButton = document.getElementById('startButton');
+        const pauseButton = document.getElementById('pauseButton');
+
+        function updateTimer() {
+            if (waktumundur > 0) {
+                waktumundur--;
+                timerElement.textContent = waktumundur;
+            } else {
+                clearInterval(timerInterval);
+                timerElement.textContent = "Waktu Habis";
+            }
+        }
+
+        function startCountdown() {
+            // Reset dan start
+            waktumundur = 5;
+            timerElement.textContent = waktumundur;
+
+            if (!isPaused) {
+                clearInterval(timerInterval);
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function pauseCountdown() {
+            clearInterval(timerInterval);
+            isPaused = true;
+        }
+
+        startButton.addEventListener('click', function() {
+            isPaused = false;
+            startCountdown();
+        });
+
+        pauseButton.addEventListener('click', function() {
+            pauseCountdown();
+        });
+    </script>
+    </div>
+</body>
+</html>
